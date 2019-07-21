@@ -17,7 +17,9 @@ module.exports = {
       json: true
     };
     return request.get(options);
-  }
+  },
+  getFullUrl,
+  getApiToken
 };
 
 function getFullUrl(url) {
@@ -31,25 +33,26 @@ function getUrlPrefix() {
   const env = process.env.NODE_ENV || 'development';
 
   let prefix = process.env.FT_API_HOST;
+  const host = process.env.CURRENT_HOST;
 
   switch (env) {
     case 'development':
       if (!prefix) {
-        prefix = 'http://localhost:3000';
+        prefix = `http://${host}`;
       } else if (!prefix.startsWith('http://')) {
         throw new Error('FT_API_HOST for dev must starts with "http://"');
       }
       break;
     case 'staging':
       if (!prefix) {
-        prefix = 'https://apistag.fulfillment.tools';
+        prefix = `https://${host}`;
       } else if (!prefix.startsWith('https://')) {
         throw new Error('FT_API_HOST for staging must starts with "https://"');
       }
       break;
     case 'production':
       if (!prefix) {
-        prefix = 'https://api.fulfillment.tools';
+        prefix = `https://${host}`;
       } else if (!prefix.startsWith('https://')) {
         throw new Error('FT_API_HOST for production must starts with "https://"');
       }
