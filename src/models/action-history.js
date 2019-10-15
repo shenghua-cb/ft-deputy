@@ -11,6 +11,11 @@ module.exports = sequelize.define('action_history', {
     autoIncrement: true
   },
 
+  system: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
   user: {
     type: Sequelize.STRING,
     allowNull: false
@@ -25,7 +30,7 @@ module.exports = sequelize.define('action_history', {
     type: Sequelize.TEXT('long'),
     allowNull: false
   }
-  }, {
+}, {
   timestamps: true,
   underscored: true,
 

@@ -19,7 +19,12 @@ module.exports = sequelize.define('user', {
   email: {
     type: Sequelize.STRING,
     allowNull: false
-  }
+  },
+
+  system: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
 }, {
   timestamps: true,
   underscored: true,

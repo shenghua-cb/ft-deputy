@@ -21,6 +21,11 @@ module.exports = sequelize.define('preference', {
     allowNull: true
   },
 
+  system: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+
   content: {
     type: Sequelize.TEXT('long'),
     allowNull: false
@@ -38,11 +43,11 @@ module.exports = sequelize.define('preference', {
 
   scopes: {
     schema: {
-      where: {name: 'schema'}
+      where: { name: 'schema' }
     },
 
     mapping: {
-      where: {name: 'mapping'}
+      where: { name: 'mapping' }
     }
   }
 });
